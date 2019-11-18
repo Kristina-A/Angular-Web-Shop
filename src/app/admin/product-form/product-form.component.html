@@ -1,7 +1,10 @@
-<form>
+<form #f="ngForm" (ngSubmit)="save(f.value)"> <!--f.value je json objekat sa vrednostima polja-->
     <div class="form-group">
         <label for="title">Naziv</label>
-        <input id="title" type="text" class="form-control">
+        <input #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required> <!--ngModel da bi se napravio json objekat sa vrednostima polja, name imena attr u json objektu-->
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+            Naziv je obavezan!
+        </div>
     </div>
     <div class="form-group">
         <label for="price">Cena</label>
@@ -9,21 +12,32 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">RSD</span>
             </div>
-            <input id="price" type="number" class="form-control">
+            <input #price="ngModel" ngModel name="price" id="price" type="number" class="form-control" required [min]="0">
+        </div>
+        <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+            <div *ngIf="price.errors.required">Cena je obavezna!</div>
+            <div *ngIf="price.errors.min">Cena mora biti veća od 0!</div>           
         </div>
     </div>
     <div class="form-group">
         <label for="category">Kategorija</label>
-        <select id="category" class="form-control">
+        <select #category="ngModel" ngModel name="category" id="category" class="form-control" required>
             <option value=""></option>
             <option *ngFor="let c of categories$ | async" [value]="c.key">
                 {{c.value["name"]}}
             </option>
         </select>
+        <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
+            Kategorija je obavezna!
+        </div>
     </div>
     <div class="form-group">
         <label for="imageUrl">Slika</label>
-        <input id="imageUrl" type="text" class="form-control">
+        <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
+        <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+            <div *ngIf="imageUrl.errors.required">Slika je obavezna!</div>
+            <div *ngIf="imageUrl.errors.url">Unesite validan URL!</div>     
+        </div>
     </div>
     <button class="btn btn-success">Sačuvaj</button>
 </form>
