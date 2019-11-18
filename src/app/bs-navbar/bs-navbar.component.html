@@ -14,7 +14,7 @@
             <a class="nav-link" routerLink="/login">Prijava</a> <!--prijava samo ako je user null-->
           </li>
         </ng-template>
-        <li *ngIf="user$ | async as user; else anonymousUser" ngbDropdown class="nav-item dropdown"> <!--samo ako je ulogovan-->
+        <li *ngIf="auth.user$ | async as user; else anonymousUser" ngbDropdown class="nav-item dropdown"> <!--samo ako je ulogovan-->
           <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{user.displayName}}
           </a>
