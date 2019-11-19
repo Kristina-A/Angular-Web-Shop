@@ -12,14 +12,14 @@
     </data-table-column>
 
     <data-table-column [property]="'price'" [header]="'Cena'" [sortable]="true" [resizable]="true">
-        <ng-template #dataTableCell let-item="product">
-            {{product.price | currency:'RSD '}}
+        <ng-template #dataTableCell let-item="item">
+            {{item.price | currency:'RSD '}}
         </ng-template>
     </data-table-column>
 
-    <data-table-column [property]="'$key'">
-        <ng-template #dataTableCell let-item="product">
-            <a [routerLink]="['/admin/products/', p.key]">Izmeni</a>
+    <data-table-column [property]="'key'">
+        <ng-template #dataTableCell let-item="item">
+            <a [routerLink]="['/admin/products/', item.key]">Izmeni</a>
         </ng-template>
     </data-table-column>
 </data-table>
