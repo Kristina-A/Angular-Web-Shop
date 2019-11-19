@@ -2,23 +2,25 @@
     <a routerLink="/admin/products/new" class="btn btn-info">Novi proizvod</a>
 </p>
 <br>
+<p>
+    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Pretraži...">
+</p>
 <br>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Naziv</th>
-            <th>Cena</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let p of products$ | async">
-            <td>{{p.value["title"]}}</td>
-            <td>{{p.value["price"] | currency:'RSD'}}</td>
-            <td>
-                <a [routerLink]="['/admin/products/', p.key]">Izmeni</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+
+<data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+    <data-table-column [property]="'title'" [header]="'Naziv'" [sortable]="true" [resizable]="true">
+    </data-table-column>
+
+    <data-table-column [property]="'price'" [header]="'Cena'" [sortable]="true" [resizable]="true">
+        <ng-template #dataTableCell let-item="product">
+            {{product.price | currency:'RSD '}}
+        </ng-template>
+    </data-table-column>
+
+    <data-table-column [property]="'$key'">
+        <ng-template #dataTableCell let-item="product">
+            <a [routerLink]="['/admin/products/', p.key]">Izmeni</a>
+        </ng-template>
+    </data-table-column>
+</data-table>
 
