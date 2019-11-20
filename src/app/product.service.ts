@@ -15,7 +15,9 @@ export class ProductService {
   }
 
   getAll(){
-    return this.db.list('/products').snapshotChanges();
+    return this.db.list('/products').snapshotChanges().pipe(map(changes=>
+      changes.map(c=>({key:c.key, title:c.payload.val()["title"], price:c.payload.val()["price"],
+                      category:c.payload.val()["category"], imageUrl:c.payload.val()["imageUrl"]}))));
   }
 
   get(productId){
