@@ -4,7 +4,22 @@
         <h5 class="card-title">{{product.title}}</h5>
         <p class="card-text">{{product.price | currency:'RSD '}}</p>
     </div>
-    <div class="card-footer">
-        <a *ngIf="showActions" href="#" class="btn btn-primary btn-block">Dodaj u korpu</a>
+    <div *ngIf="showActions" class="card-footer">
+        <button *ngIf="getQuantity()===0; else updateQuantity" 
+        (click)="addToCart(product)" 
+        class="btn btn-secondary btn-block">Dodaj u korpu</button>
+        <ng-template #updateQuantity>
+            <div class="row no-gutters">
+                <div class="col-2">
+                    <button class="btn btn-secondary btn-block">-</button>
+                </div>
+                <div class="col text-center">
+                    {{getQuantity()}} u korpi
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-secondary btn-block">+</button>
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>
