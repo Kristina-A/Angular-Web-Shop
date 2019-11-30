@@ -12,7 +12,7 @@ export class ShoppingCartService {
 
   constructor(private db:AngularFireDatabase) { }
 
-  create(){
+  private create(){
     return this.db.list('shopping-carts').push({
       dateCreated: new Date().getTime()
     })
@@ -52,7 +52,14 @@ export class ShoppingCartService {
     let item$=this.getItem(cartId, product.key);
 
     item$.valueChanges().pipe(take(1)).subscribe((item:any)=>{
-      item$.update({product:product, quantity: item? item.quantity -1 : 0}); //koristi se item$ jer na observable ne postoji ova fja
+      let quantity=item? item.quantity -1 : 0;
+      if(quantity===0) item$.remove();
+      else item$.update({product:product, quantity:quantity }); //koristi se item$ jer na observable ne postoji ova fja
     });
+  }
+
+  async clearCart(){
+    let cartId=await this.getOrCreateCartId();
+    this.db.object('/shopping-carts/'+cartId+'/items').remove();
   }
 }
