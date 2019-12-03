@@ -14,4 +14,12 @@ export class OrderService {
     this.cartservice.clearCart();
     return result;
   }
+
+  getOrders(){
+    return this.db.list('/orders').valueChanges();//za admin manage orders
+  }
+
+  getOrdersByUser(userId:string){
+    return this.db.list('/orders',ref=>ref.orderByChild(userId).equalTo(userId)).valueChanges();//za my orders
+  }
 }
