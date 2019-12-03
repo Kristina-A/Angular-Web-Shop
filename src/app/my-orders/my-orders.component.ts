@@ -12,7 +12,7 @@ export class MyOrdersComponent {
   orders$;
 
   constructor(private authService:AuthService, private orderService:OrderService) {
-    this.orders$=authService.user$.pipe(switchMap(u=>this.orderService.getOrdersByUser(u.uid)));
+    this.orders$= authService.user$.pipe(switchMap(u=>this.orderService.getOrdersByUser(u.uid)));
    }
 
 }

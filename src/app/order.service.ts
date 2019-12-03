@@ -20,6 +20,6 @@ export class OrderService {
   }
 
   getOrdersByUser(userId:string){
-    return this.db.list('/orders',ref=>ref.orderByChild(userId).equalTo(userId)).valueChanges();//za my orders
+    return this.db.list('/orders',ref=>ref.orderByChild('userId').equalTo(userId)).valueChanges();//za my orders
   }
 }
