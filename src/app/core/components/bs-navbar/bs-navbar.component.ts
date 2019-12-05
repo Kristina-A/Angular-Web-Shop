@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
 import { ShoppingCartService } from 'shared/services/shopping-cart.service';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faGem } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'bs-navbar',
@@ -13,6 +15,8 @@ import { ShoppingCartService } from 'shared/services/shopping-cart.service';
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent implements OnInit {
+  shoppingCart=faShoppingCart;
+  gem=faGem;
   appUser:AppUser;
   cart$:Observable<ShoppingCart>;
 

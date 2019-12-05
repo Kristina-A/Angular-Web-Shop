@@ -5,3 +5,34 @@
 body{
     padding-top: 80px;
 }
+
+.navbar-dark .navbar-brand {
+    color: skyblue;
+}
+
+.list-group-item.active {
+    background-color: skyblue;
+    border-color: skyblue;
+}
+
+h1, h2, h3 { 
+    margin-bottom: 1.5rem;
+}
+
+.navbar-dark .navbar-brand {
+    color: skyblue;
+}
+
+.btn-primary, .btn-success {
+    background-color: skyblue;
+    border-color: skyblue;
+}
+
+.btn-primary.disabled, .btn-primary:disabled, .btn-success.disabled, .btn-success:disabled {
+    background-color: skyblue;
+    border-color: skyblue;
+}
+
+.form-control:focus {
+    border-color: skyblue;
+}
