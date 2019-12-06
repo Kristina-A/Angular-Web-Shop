@@ -1,3 +1,4 @@
+import { OrderFormComponent } from 'shared/components/order-form/order-form.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -20,7 +21,8 @@ import { ProductQuantityComponent } from './components/product-quantity/product-
 @NgModule({
   declarations: [
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    OrderFormComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,7 @@ import { ProductQuantityComponent } from './components/product-quantity/product-
   exports: [
     ProductCardComponent,
     ProductQuantityComponent,
+    OrderFormComponent,
     FormsModule,
     CommonModule,
     CustomFormsModule,

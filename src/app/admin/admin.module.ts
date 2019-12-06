@@ -7,12 +7,13 @@ import { AdminOrdersComponent } from './components/admin-orders/admin-orders.com
 import { AdminProductsComponent } from './components/admin-products/admin-products.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
+import { OrderFormComponent } from 'shared/components/order-form/order-form.component';
 
 @NgModule({
   declarations: [
     AdminProductsComponent,
     AdminOrdersComponent,
-    ProductFormComponent,
+    ProductFormComponent
   ],
   imports: [
     SharedModule,
@@ -20,6 +21,7 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
       {path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard]},
+      {path: 'admin/orders/:id', component: OrderFormComponent, canActivate: [AuthGuard, AdminAuthGuard]},
       {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]}
     ])
   ],

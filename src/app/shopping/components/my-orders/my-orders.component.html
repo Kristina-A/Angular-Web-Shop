@@ -9,10 +9,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let order of orders$ | async">
-            <td>{{order.shipping.name}}</td>
-            <td>{{order.datePlaced | date}}</td>
+            <td>{{order.value["shipping"]["name"]}}</td>
+            <td>{{order.value["datePlaced"] | date}}</td>
             <td>
-                <a href="#">Pogledaj</a>
+                <a [routerLink]="['/my/orders/', order.key]">Pogledaj</a>
             </td>
         </tr>
     </tbody>

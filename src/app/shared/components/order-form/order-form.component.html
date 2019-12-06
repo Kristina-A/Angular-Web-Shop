@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Detalji porudžbine</h5>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                Kupac
+                <div class="float-right">
+                    {{order?.shipping.name}}
+                </div>
+            </li>
+            <li class="list-group-item">
+                Adresa
+                <div class="float-right">
+                {{order?.shipping.address}} {{order?.shipping.city}}
+                </div>
+            </li>
+            <li class="list-group-item">
+                Datum
+                <div class="float-right">
+                {{order?.datePlaced | date}}
+                </div>
+            </li>
+            <li class="list-group-item font-weight-bold">
+                Proizvodi:
+            </li>
+        </ul>
+        <ul class="list-group list-group-flush">
+            <li *ngFor="let item of order?.items" class="list-group-item">
+                {{item.quantity}} x {{item.product.title}}
+                <div class="float-right">
+                    {{item.totalPrice | currency:'RSD '}}
+                </div>
+            </li>
+            <li class="list-group-item font-weight-bold">
+                Ukupno
+                <div class="float-right">
+                    {{total | currency:'RSD '}}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
