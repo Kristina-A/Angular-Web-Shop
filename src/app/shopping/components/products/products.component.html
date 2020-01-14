@@ -5,7 +5,7 @@
     <div class="col">
         <div class="row" *ngIf="cart$ | async as cart">
             <ng-container *ngFor="let p of filteredProducts; let i=index">
-                <div class="col">
+                <div class="col-6">
                     <product-card [shopping-cart]="cart" [product]="p"></product-card>
                 </div>
                 <div *ngIf="(i+1)%2===0" class="w-100"></div> <!--div za line break, posle svake druge kolone treba da se renderuje-->
